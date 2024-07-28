@@ -1,0 +1,87 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f0e4f0;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2em;
+  color: #ff1493;
+}
+
+.balloon-container {
+  display: inline-block;
+  margin: 10px;
+  position: relative;
+}
+
+.balloon {
+  width: 100px;
+  height: 150px;
+  background-color: #ff69b4;
+  border-radius: 50% 50% 0 0;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.balloon:after {
+  content: '';
+  width: 10px;
+  height: 50px;
+  background-color: #ff69b4;
+  position: absolute;
+  bottom: -50px;
+  left: 45px;
+}
+
+.message {
+  font-size: 24px;
+  margin-top: 20px;
+  color: #ff1493;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.message.show {
+  opacity: 1;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.balloon-container .balloon {
+  animation: float 1.5s ease-in-out infinite;
+}
+
+.balloon-container .balloon:hover {
+  background-color: #ff1493;
+  transform: scale(1.05);
+}
+
+.balloon-container .balloon.pop-animation {
+  animation: pop 0.5s ease forwards;
+}
